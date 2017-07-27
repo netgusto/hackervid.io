@@ -79,12 +79,15 @@ class UserController extends Controller {
 
     public function profileAction(string $username) {
         $userrepo = $this->get('userrepo');
+        $relativedatehelper = $this->get('relativedatehelper');
+
         $user = $userrepo->findOneActiveByUsername($username);
         if(is_null($user)) throw $this->createNotFoundException("This user does not exist.");
 
         return $this->render("AppBundle:User:profile.html.twig", [
             'username' => $user->getUsername(),
             'creationdate' => $user->getCreationDate(),
+            'reldate' => $relativedatehelper->get($user->getCreationDate()),
             'karma' => $user->getKarma(),
         ]);
     }

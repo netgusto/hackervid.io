@@ -110,10 +110,10 @@ class ItemController extends Controller {
             'startindex' => $fetchRange['start'] + 1,
             'hasmore' => $hasmore,
             'url_more' => $pageurl($page+1),
-            'items' => array_map(function(Item $item) use(&$upvotedids, &$pageurl, $thispageurl) : array {
+            'items' => array_map(function(Item $item) use(&$upvotedids, &$pageurl, $thispageurl, &$user) : array {
                 return $this->itemToViewProps(
                     $item,
-                    !in_array($item->getId(), $upvotedids),
+                    is_null($user) || ($user->getId() !== $item->getUser()->getId() && !in_array($item->getId(), $upvotedids)),
                     $thispageurl
                 );
             }, $items),
@@ -277,10 +277,10 @@ class ItemController extends Controller {
             'url_login' => $urlbuilder->login(),
             'commentform' => !is_null($commentform) ? $commentform->createView() : null,
             'commentformerrors' => $errors,
-            'commenttree' => $commenttreehelper->getCommentTreeForItem($item, function(ItemComment $comment) use(&$upvotedCommentsIds, $itemurl) {
+            'commenttree' => $commenttreehelper->getCommentTreeForItem($item, function(ItemComment $comment) use(&$upvotedCommentsIds, $itemurl, &$user) {
                 return $this->commentToViewProps(
                     $comment,
-                    !in_array($comment->getId(), $upvotedCommentsIds),
+                    is_null($user) || ($user->getId() !== $comment->getUser()->getId() && !in_array($comment->getId(), $upvotedCommentsIds)),
                     $itemurl
                 );
             }, is_null($parentcomment) ? null : $parentcomment->getId()),
