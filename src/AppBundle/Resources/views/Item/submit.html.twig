@@ -1,0 +1,13 @@
+{% extends '::layouts/standard.html.twig' %}
+{% block main %}{% spaceless %}
+<h2>Submit</h2>
+
+{{ component('ui').formerrors({ errors: errors })|raw }}
+
+{{ form_start(form, { attr: { novalidate: 'novalidate'}}) }}
+<p><label>Title<br/>{{ form_widget(form.title, { attr: { style: 'width: 90%' }}) }}</label></p>
+<p><label>URL<br/>{{ form_widget(form.url, { attr: { style: 'width: 90%' }}) }}</label></p>
+<p><input type="submit" value="Submit"></p>
+{{ form_end(form) }}
+
+{% endspaceless %}{% endblock %}

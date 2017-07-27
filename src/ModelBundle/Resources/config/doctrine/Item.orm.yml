@@ -1,0 +1,65 @@
+ModelBundle\Entity\Item:
+    type: entity
+    table: item
+
+    changeTrackingPolicy: DEFERRED_EXPLICIT
+    options:
+        charset: utf8mb4
+        collate: utf8mb4_unicode_ci
+
+    repositoryClass: ModelBundle\Repository\ItemRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    oneToMany:
+
+        comments:
+            targetEntity: ItemComment
+            mappedBy: item
+            fetch: EXTRA_LAZY
+
+        votes:
+            targetEntity: ItemVote
+            mappedBy: item
+            fetch: EXTRA_LAZY
+
+    manyToOne:
+
+        user:
+            targetEntity: User
+            fetch: EXTRA_LAZY
+            inversedBy: items
+            nullable: false
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+
+    fields:
+
+        title:
+            type: string
+            length: 255
+
+        url:
+            type: string
+            length: 512
+
+        points:
+            type: integer
+
+        momentum:
+            type: float
+
+        ipv4:
+            type: string
+            length: 15
+
+        creationdate:
+            type: datetime
+
+    lifecycleCallbacks: {  }

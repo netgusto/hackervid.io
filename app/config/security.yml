@@ -1,0 +1,34 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+
+    encoders:
+        ModelBundle\Entity\User:
+            algorithm: bcrypt
+
+    providers:
+        user_db:
+            entity: { class: ModelBundle\Entity\User, property: username }
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            provider: user_db
+
+            logout:
+                path: /logout
+
+            anonymous: ~
+            form_login:
+                login_path: app_login
+                check_path: app_login_check
+
+    access_control:
+        - { path: ^/account, role: ROLE_USER }
+        - { path: ^/submit, role: ROLE_USER }
+        - { path: ^/upvote, role: ROLE_USER }
+        - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }

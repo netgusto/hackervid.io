@@ -1,0 +1,8 @@
+services:
+
+    app.component.ui:
+        class: AppBundle\Component\UIComponent
+        arguments:
+            - "@twig"
+
+    component.ui: "@app.component.ui"

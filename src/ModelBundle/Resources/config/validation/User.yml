@@ -1,0 +1,55 @@
+ModelBundle\Entity\User:
+
+    constraints:
+
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [username]
+            errorPath: username
+            message: 'This username is not available. Please choose another.'
+            groups: [create, update]
+
+    properties:
+
+        username:
+
+            - NotBlank:
+                message: "Username is required."
+                groups: [create, update]
+
+            - Length:
+                min: 2
+                max: 15
+                minMessage: 'Username must be at least {{ limit }} characters long.'
+                maxMessage: 'Username cannot be longer than {{ limit }} characters.'
+
+            - Regex:
+                pattern: '/^[a-z0-9\-_]+$/'
+                message: "Usernames can only contain lowercase letters, digits, dashes and underscores. Please choose another."
+                groups: [create, update]
+
+        plainpassword:
+
+            - NotBlank:
+                message: "Password is required."
+                groups: [create]
+
+            - Length:
+                min: 8
+                max: 4096
+                minMessage: 'Password must be at least {{ limit }} characters long. Please choose another.'
+                maxMessage: 'Password cannot be longer than {{ limit }} characters. Please choose another.'
+                groups: [create]
+
+        karma:
+            - NotBlank:
+                message: "Karma is required."
+                groups: [create, update]
+
+            - Range:
+                min: 1
+                minMessage: "Karma must be at least {{ limit }}."
+
+        creationdate:
+            - NotBlank:
+                message: "Creation date is required."
+                groups: [create, update]

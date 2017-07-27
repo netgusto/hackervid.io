@@ -1,0 +1,51 @@
+services:
+    model.repository.user:
+        class: ModelBundle\Repository\UserRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - 'ModelBundle:User'
+        calls:
+            - [initServiceRepository, ["@doctrine.orm.entity_manager", 'ModelBundle:User']]
+            - [setDependencies, ["@validator", "@utils"]]
+
+    model.repository.item:
+        class: ModelBundle\Repository\ItemRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - 'ModelBundle:Item'
+        calls:
+            - [initServiceRepository, ["@doctrine.orm.entity_manager", 'ModelBundle:Item']]
+            - [setDependencies, ["@validator", "@utils"]]
+
+    model.repository.itemcomment:
+        class: ModelBundle\Repository\ItemCommentRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - 'ModelBundle:ItemComment'
+        calls:
+            - [initServiceRepository, ["@doctrine.orm.entity_manager", 'ModelBundle:ItemComment']]
+            - [setDependencies, ["@validator", "@utils"]]
+
+    model.repository.itemvote:
+        class: ModelBundle\Repository\ItemVoteRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - 'ModelBundle:ItemVote'
+        calls:
+            - [initServiceRepository, ["@doctrine.orm.entity_manager", 'ModelBundle:ItemVote']]
+            - [setDependencies, ["@validator", "@utils"]]
+
+    model.repository.itemcommentvote:
+        class: ModelBundle\Repository\ItemCommentVoteRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - 'ModelBundle:ItemCommentVote'
+        calls:
+            - [initServiceRepository, ["@doctrine.orm.entity_manager", 'ModelBundle:ItemCommentVote']]
+            - [setDependencies, ["@validator", "@utils"]]
+
+    userrepo: "@model.repository.user"
+    itemrepo: "@model.repository.item"
+    itemcommentrepo: "@model.repository.itemcomment"
+    itemvoterepo: "@model.repository.itemvote"
+    itemcommentvoterepo: "@model.repository.itemcommentvote"

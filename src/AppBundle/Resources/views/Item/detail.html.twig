@@ -1,0 +1,35 @@
+{% extends '::layouts/standard.html.twig' %}
+{% block main %}{% spaceless %}
+<section>
+
+    {% if parentcomment|length %}
+        <section id="comments">
+        {{ component('ui').comment(parentcomment, true)|raw }}
+        </section>
+    {% else %}
+        {{ component('ui').item(item)|raw }}
+    {% endif %}
+
+    {% if isauth %}
+        {{ component('ui').formerrors({ errors: commentformerrors })|raw }}
+
+        {{ form_start(commentform) }}
+        <p>
+            {{ form_widget(commentform.content, { attr: { style: 'width: 90%; height: 96px;' }}) }}
+        </p>
+        <p><input type="submit" value="Add comment"></p>
+        {{ form_end(commentform) }}
+    {% else %}
+        <p>
+            <br />
+            <button onclick="document.location.href='{{ url_login }}';">Log in to comment</button>
+        </p>
+    {% endif %}
+</section>
+
+<section id="comments">
+{{ component('ui').commenttree({
+    comments: commenttree
+})|raw }}
+</section>
+{% endspaceless %}{% endblock %}

@@ -1,0 +1,12 @@
+<ul>
+    {% for comment in comments %}
+    <li>
+        {{ component('ui').comment(comment)|raw }}
+        {% if comment.children|length %}
+            {{ component('ui').commenttree({
+                comments: comment.children
+            })|raw }}
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>

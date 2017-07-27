@@ -1,0 +1,25 @@
+{% extends '::layouts/standard.html.twig' %}
+{% block main %}{% spaceless %}
+<h2>Login</h2>
+
+{% if login.error %}
+    <div>{{ login.error.messageKey|trans(login.error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ login.url_login|escape('html_attr') }}" method="post">
+    <p><label>Username<br/><input type="text" name="_username"></label></p>
+    <p><label>Password<br/><input type="password" name="_password"></label></p>
+    <p><input type="submit" value="Login"></p>
+</form>
+
+<h2>Create an account</h2>
+
+{{ component('ui').formerrors({ errors: create.errors })|raw }}
+
+{{ form_start(create.form, { attr: { novalidate: 'novalidate'}}) }}
+<p><label>Username<br/>{{ form_widget(create.form.username) }}</label></p>
+<p><label>Password<br/>{{ form_widget(create.form.plainpassword) }}</label></p>
+<p><input type="submit" value="Create an account"></p>
+{{ form_end(create.form) }}
+
+{% endspaceless %}{% endblock %}

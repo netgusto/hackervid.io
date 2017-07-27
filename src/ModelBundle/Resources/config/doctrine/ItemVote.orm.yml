@@ -1,0 +1,48 @@
+ModelBundle\Entity\ItemVote:
+    type: entity
+    table: itemvote
+
+    changeTrackingPolicy: DEFERRED_EXPLICIT
+    options:
+        charset: utf8mb4
+        collate: utf8mb4_unicode_ci
+
+    repositoryClass: ModelBundle\Repository\ItemVoteRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    manyToOne:
+
+        user:
+            targetEntity: User
+            fetch: EXTRA_LAZY
+            inversedBy: itemvotes
+            nullable: false
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+
+        item:
+            targetEntity: Item
+            fetch: EXTRA_LAZY
+            inversedBy: votes
+            nullable: false
+            joinColumn:
+                name: item_id
+                referencedColumnName: id
+
+    fields:
+
+        ipv4:
+            type: string
+            length: 15
+
+        creationdate:
+            type: datetime
+
+    lifecycleCallbacks: {  }

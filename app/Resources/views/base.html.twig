@@ -1,0 +1,155 @@
+{% spaceless %}
+<!DOCTYPE html>
+<html lang="en"{% if htmlclass is defined and htmlclass %} class="{{ htmlclass|escape("html_attr") }}"{% endif %}>
+<head>
+<meta charset="UTF-8" />
+<meta name="referrer" content="origin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hacker Videos</title>
+<style>
+
+body {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 10pt;
+  background: whitesmoke;
+  padding: 0; margin: 0;
+}
+
+header, footer, main {
+  padding: 5px 10px;
+}
+
+html.list main { padding: 5px 0; }
+
+header, footer { font-size: 12px; line-height: 24px; }
+
+header { background: #B0413E; }
+
+header a.brand { font-weight: bold; }
+
+header, header a { color: white; }
+
+header a.active { font-weight: bold; text-decoration: none;}
+
+ol li { margin-bottom: 1em; }
+
+ol { margin-top: 7px; padding-left: 15px; }
+
+ol {
+  list-style-type: none;
+  counter-reset: list-counter 50;
+}
+
+ol li .item:before {
+  content: counter(list-counter) ". ";
+  counter-increment: list-counter;
+  color: gray;
+  font-size: 11pt; line-height: 14pt;
+}
+
+section { margin-top: 7px; }
+
+footer {
+  border-top: 2px solid #B0413E;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+input[type=text], input[type=password], textarea {
+    font-family: monospace;
+    font-size: 16px;
+}
+
+section#comments ul {
+    list-style-type: none;
+    padding-left: 0;
+    padding-top: 1em;
+}
+
+section#comments>ul ul {
+    padding-left: 42px;
+}
+
+section#comments li {
+  margin-bottom: 1em;
+}
+
+section#comments article {
+    font-size: 9pt;
+}
+
+section#comments article p {
+  margin-top: 8px;
+  margin-bottom: 0px;
+}
+
+pre {
+  max-width: 900px;
+  overflow: auto;
+  padding: 2px;
+}
+
+@media only screen and (min-width : 300px) and (max-width : 389px) {
+  pre { max-width: 280px; }
+}
+
+@media only screen and (min-width : 390px) and (max-width : 509px) {
+  pre { max-width: 370px; }
+}
+
+@media only screen and (min-width : 510px) and (max-width : 599px) {
+  pre { max-width: 490px; }
+}
+
+@media only screen and (min-width : 600px) and (max-width : 689px) {
+  pre { max-width: 580px; }
+}
+
+@media only screen and (min-width : 690px) and (max-width : 809px) {
+  pre { max-width: 670px; }
+}
+
+@media only screen and (min-width : 810px) and (max-width : 899px) {
+  pre { max-width: 790px; }
+}
+
+@media only screen and (min-width : 900px) and (max-width : 1079px) {
+  pre { max-width: 880px; }
+}
+
+@media only screen and (min-width : 1080px) and (max-width : 1169px) {
+  pre { max-width: 1060px; }
+}
+
+@media only screen and (min-width : 1170px) and (max-width : 1259px) {
+  pre { max-width: 1150px; }
+}
+
+@media only screen and (min-width : 1260px) and (max-width : 1349px) {
+  pre { max-width: 1240px; }
+}
+
+div.errors { padding: 1em 0; }
+
+.muted, .muted a,
+.upvote a, .reply a,
+.comment-header, .comment-header a,
+.comment-item, .comment-item a,
+.item .meta, .item .meta a { color: grey; text-decoration: none; }
+
+.upvote a, .item .meta a { text-decoration: none; }
+.upvote a:hover, .item .meta a:hover { text-decoration: underline; }
+
+.item a.title { color: black; text-decoration: none; font-size: 11pt; line-height: 14pt; }
+.item a.title:visited { color: #828282; }
+
+input[type=button], input[type=submit] {
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+
+</style>
+</head>
+<body>{% block body %}{% endblock %}</body>
+</html>
+{% endspaceless %}

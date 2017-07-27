@@ -1,0 +1,60 @@
+imports:
+    - { resource: "./components.yml" }
+
+services:
+
+    app.twigextension:
+        class: AppBundle\Twig\AppExtension
+        arguments:
+            # Inject service container to lazyload dependencies
+            - "@service_container"
+        tags:
+            - { name: twig.extension }
+
+    app.utils:
+        class: AppBundle\Services\Utils
+        arguments:
+            # Inject service container to lazyload dependencies
+            - "@service_container"
+
+    app.urlbuilder:
+        class: AppBundle\Services\URLBuilder
+        arguments:
+            - "@router"
+
+    app.commenttreehelper:
+        class: AppBundle\Services\CommentTreeHelper
+        arguments:
+            - "@itemcommentrepo"
+
+    app.relativedatehelper:
+        class: AppBundle\Services\RelativeDateHelper
+
+    app.formatdochelper:
+        class: AppBundle\Services\FormatDocHelper
+
+    app.upvotehelper:
+        class: AppBundle\Services\UpvoteHelper
+        arguments:
+            - "%upvote_item_maxage%"
+            - "@itemrepo"
+            - "@itemvoterepo"
+            - "@itemcommentrepo"
+            - "@itemcommentvoterepo"
+            - "@userrepo"
+            - "@utils"
+            - "@rankinghelper"
+
+    app.rankinghelper:
+        class: AppBundle\Services\RankingHelper
+        arguments:
+            - "@utils"
+
+    em: "@doctrine.orm.entity_manager"
+    urlbuilder: "@app.urlbuilder"
+    utils: "@app.utils"
+    relativedatehelper: "@app.relativedatehelper"
+    formatdochelper: "@app.formatdochelper"
+    commenttreehelper: "@app.commenttreehelper"
+    upvotehelper: "@app.upvotehelper"
+    rankinghelper: "@app.rankinghelper"

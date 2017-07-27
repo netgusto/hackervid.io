@@ -1,0 +1,26 @@
+{% extends '::layouts/standard.html.twig' %}
+{% block main %}{% spaceless %}
+<h2>Account</h2>
+<table>
+<tr>
+    <th>user</th>
+    <td>{{ username }}</td>
+</tr>
+<tr>
+    <th>created</th>
+    <td>{{ relativedate(creationdate) }}</td>
+</tr>
+<tr>
+    <th>karma</th>
+    <td>{{ karma }}</td>
+</tr>
+{#<tr>
+    <td></td>
+    <td>
+        <a href="#">Change password</a><br />
+        <a href="#">Submissions</a><br />
+        <a href="#">Comments</a>
+    </td>
+</tr>#}
+</table>
+{% endspaceless %}{% endblock %}

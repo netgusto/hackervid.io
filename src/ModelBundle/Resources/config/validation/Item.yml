@@ -1,0 +1,59 @@
+ModelBundle\Entity\Item:
+
+    properties:
+
+        user:
+
+            - NotBlank:
+                groups: [create, update]
+                message: "User is required."
+
+        title:
+            - NotBlank:
+                groups: [create, update]
+                message: "Title is required."
+
+            - Length:
+                groups: [create, update]
+                min: 3
+                max: 100
+                minMessage: 'Title must be at least {{ limit }} characters long.'
+                maxMessage: 'Title cannot be longer than {{ limit }} characters.'
+
+        url:
+            - NotBlank:
+                groups: [create, update]
+                message: "URL is required."
+
+            - Length:
+                groups: [create, update]
+                min: 8
+                max: 255
+                minMessage: 'URL must be at least {{ limit }} characters long.'
+                maxMessage: 'URL cannot be longer than {{ limit }} characters.'
+
+            - Url:
+                groups: [create, update]
+                message: URL is not valid.
+                protocols: [http, https]
+                checkDNS: false
+
+        points:
+            - NotBlank:
+                groups: [create, update]
+                message: "Points is required."
+
+        momentum:
+            - NotBlank:
+                groups: [create, update]
+                message: "Momentum is required."
+
+        ipv4:
+            - NotBlank:
+                groups: [create, update]
+                message: "Ipv4 is required."
+
+        creationdate:
+            - NotBlank:
+                groups: [create, update]
+                message: "Creation date is required."

@@ -1,0 +1,10 @@
+{% spaceless %}
+<ol start="{{ startindex }}" style="counter-reset: list-counter {{ (startindex-1)|escape('html_attr') }};">
+{% for item in items %}
+    <li>{{ component('ui').item(item)|raw }}</li>
+{% endfor %}
+</ol>
+{% if hasmore %}
+<p>&#x3000;<a href="{{ url_more }}" class="muted">More</a></p>
+{% endif %}
+{% endspaceless %}

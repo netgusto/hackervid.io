@@ -1,0 +1,10 @@
+{% extends '::layouts/standard.html.twig' %}
+{% set htmlclass = "list" %}
+{% block main %}{% spaceless %}
+{{ component('ui').itemlistordered({
+    items: items,
+    startindex: startindex,
+    hasmore: hasmore,
+    url_more: url_more
+})|raw }}
+{% endspaceless %}{% endblock %}

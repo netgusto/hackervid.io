@@ -1,0 +1,23 @@
+ModelBundle\Entity\ItemVote:
+
+    properties:
+
+        user:
+            - NotBlank:
+                message: "User is required."
+                groups: [create, update]
+
+        item:
+            - NotBlank:
+                message: "Item is required."
+                groups: [create, update]
+
+        ipv4:
+            - NotBlank:
+                message: "Ipv4 is required."
+                groups: [create, update]
+
+        creationdate:
+            - NotBlank:
+                message: "Creation date is required."
+                groups: [create, update]

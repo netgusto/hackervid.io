@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>hackervid.io</title>
+<style>
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+}
+header, main, li { margin-bottom: 1em; }
+main, section, footer { margin-top: 2em; }
+textarea {
+    font-family: monospace;
+    font-size: 16px;
+}
+
+section#comments ul {
+    list-style-type: none;
+    padding-left: 0;
+    padding-top: 1em;
+}
+
+section#comments>ul ul {
+    padding-left: 1.2em;
+}
+
+section#comments article {
+    margin-left: 1.3em;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    <a href="http://hackervid.io">hackervid.io</a>&#x3000;
+    ⊙ <a href="#">new</a>&#x3000;
+    ⊕ <a href="#">submit</a>&#x3000;
+    ⊜ <a href="#">netgusto</a> <small>(471)</small> | <a href="#">logout</a>
+</header>
+
+<!-- HP -->
+
+<main>
+<ol start="31">
+    <li>
+        <a href="upvote">&#x25b2;</a> <a href="http://google.com">A Search engine</a><br />
+        <small>&#x3000; 10 points by <a href="http://hackervid.io/u/netgusto">netgusto</a> <a href="http://hackervid.io/item/ABCDEF">7 days ago</a> | <a href="http://hackervid.io/item/ABCDEF">256 comments</a></small>
+    </li>
+    <li>
+        &#x3000; <a href="http://google.com">A Search engine</a><br />
+        <small>&#x3000; 10 points by <a href="http://hackervid.io/u/netgusto">netgusto</a> <a href="http://hackervid.io/item/ABCDEF">7 days ago</a> | <a href="http://hackervid.io/item/ABCDEF">256 comments</a></small>
+    </li>
+</ol>
+&#x3000;<a href="http://hackervid.io/2">More</a>
+</main>
+
+<hr />
+<!-- Submit -->
+
+<main>
+<h2>Submit</h2>
+<form>
+    <p><label>Title<br/><input type="text" style="width: 90%;"></label></p>
+    <p><label>URL<br/><input type="text" style="width: 90%;"></label></p>
+    <p><input type="submit"></p>
+</form>
+</main>
+
+<hr />
+<!-- Login/Register -->
+
+<main>
+<h2>Login</h2>
+<form>
+    <p><label>Username<br/><input type="text"></label></p>
+    <p><label>Password<br/><input type="text"></label></p>
+    <p><input type="submit" value="Login"></p>
+</form>
+
+<h2>Create an account</h2>
+<form>
+    <p><label>Username<br/><input type="text"></label></p>
+    <p><label>Password<br/><input type="text"></label></p>
+    <p><input type="submit" value="Create an account"></p>
+</form>
+</main>
+
+<hr />
+<!-- Account -->
+
+<main>
+<h2>Account</h2>
+<table>
+<tr>
+    <th>user</th>
+    <td>netgusto</td>
+</tr>
+<tr>
+    <th>created</th>
+    <td>15 days ago</td>
+</tr>
+<tr>
+    <th>karma</th>
+    <td>471</td>
+</tr>
+<tr>
+    <td></td>
+    <td>
+        <a href="#">Change password</a><br />
+        <a href="#">Submissions</a><br />
+        <a href="#">Comments</a>
+    </td>
+</tr>
+</table>
+
+</main>
+
+<hr />
+<!-- Item -->
+
+<main>
+<section>
+    <a href="upvote">&#x25b2;</a> <a href="http://google.com">A Search engine</a><br />
+    <small>&#x3000; 10 points by <a href="http://hackervid.io/u/netgusto">netgusto</a> <a href="http://hackervid.io/item/ABCDEF">7 days ago</a> | <a href="http://hackervid.io/item/ABCDEF">256 comments</a></small>
+
+    <p>
+        <textarea style="width: 90%; height: 96px;"></textarea>
+    </p>
+    <p><input type="submit" value="Add comment"></p>
+</section>
+
+<section id="comments">
+<ul>
+    <li>
+        <a href="upvote">&#x25b2;</a><small> <a href="#">netgusto</a> 4 minutes ago</small><br />
+        <article>
+            <p>So, a decompiler is cool and all, but...a five-line "Hello World" program turned into a 144-line decompiled program. Is that an accomplishment? I'm pretty sure the "reconstructed" C from that is longer than the assembly.</p>
+            <p>EDIT: Just to confirm, this is what I got when I put the Hello World code into "hello.c" and ran GCC against it:</p>
+            <pre>
+                <code>
+          .file   "hello.c"
+          .section        .rodata.str1.1,"aMS",@progbits,1
+  .LC0:
+          .string "Hello, World!"
+          .text
+          .p2align 4,,15
+  .globl main
+          .type   main, @function
+  main:
+  .LFB11:
+          .cfi_startproc
+          subq    $8, %rsp
+          .cfi_def_cfa_offset 16
+          movl    $.LC0, %edi
+          call    puts
+          xorl    %eax, %eax
+          addq    $8, %rsp
+          .cfi_def_cfa_offset 8
+          ret
+          .cfi_endproc
+  .LFE11:
+          .size   main, .-main
+          .ident  "GCC: (GNU) 4.4.7 20120313 (Red Hat 4.4.7-18)"
+          .section        .note.GNU-stack,"",@progbits
+                </code>
+            </pre>
+        </article>
+    </li>
+    <li>
+        &#x3000; <small> <a href="#">netgusto</a> 4 minutes ago</small><br />
+        <article>
+            <p>So, a decompiler is cool and all, but...a five-line "Hello World" program turned into a 144-line decompiled program. Is that an accomplishment? I'm pretty sure the "reconstructed" C from that is longer than the assembly.</p>
+        </article>
+        <ul>
+            <li>
+                <a href="upvote">&#x25b2;</a><small> <a href="#">netgusto</a> 4 minutes ago</small><br />
+                <article>
+            <p>So, a decompiler is cool and all, but...a five-line "Hello World" program turned into a 144-line decompiled program. Is that an accomplishment? I'm pretty sure the "reconstructed" C from that is longer than the assembly.</p>
+            <p>EDIT: Just to confirm, this is what I got when I put the Hello World code into "hello.c" and ran GCC against it:</p>
+            <pre>
+                <code>
+          .file   "hello.c"
+          .section        .rodata.str1.1,"aMS",@progbits,1
+  .LC0:
+          .string "Hello, World!"
+          .text
+          .p2align 4,,15
+  .globl main
+          .type   main, @function
+  main:
+  .LFB11:
+          .cfi_startproc
+          subq    $8, %rsp
+          .cfi_def_cfa_offset 16
+          movl    $.LC0, %edi
+          call    puts
+          xorl    %eax, %eax
+          addq    $8, %rsp
+          .cfi_def_cfa_offset 8
+          ret
+          .cfi_endproc
+  .LFE11:
+          .size   main, .-main
+          .ident  "GCC: (GNU) 4.4.7 20120313 (Red Hat 4.4.7-18)"
+          .section        .note.GNU-stack,"",@progbits
+                </code>
+            </pre>
+        </article>
+            </li>
+            <li>
+                <a href="upvote">&#x25b2;</a><small> <a href="#">netgusto</a> 4 minutes ago</small><br />
+                <article><p>Cool</p></article>
+            </li>
+        </ul>
+    </li>
+</ul>
+</section>
+
+</main>
+
+<footer>
+    <small><a href="#">Guidelines</a></small>&#x3000;<small><a href="#">Contact</a></small>
+</footer>
+
+</body>
+</html>

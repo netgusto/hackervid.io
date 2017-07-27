@@ -1,0 +1,17 @@
+{% spaceless %}
+<header>
+    <a href="/">
+        <svg style="vertical-align:middle; margin-bottom: 2px;" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="22px" height="22px">
+            <g fill-rule="evenodd">
+                <rect width="24" height="24" rx="6" fill="#fff"/>
+                <polygon points="19 12 8 19 8 5" fill="#B0413E"/>
+            </g>
+        </svg>
+    </a>&nbsp;
+    <a href="/" class="brand{% if actives.topranking %} active{% endif %}">Hacker Videos</a> | <a href="{{ url_new|escape('html_attr') }}" {% if actives.newest %}class="active"{% endif %}>newest</a> | <a href="{{ url_submit|escape('html_attr') }}" {% if actives.submit %}class="active"{% endif %}>submit</a> | {% if isauth %}
+        <a href="{{ url_account|escape('html_attr') }}" {% if actives.profile %}class="active"{% endif %}>{{ username }}</a>&nbsp;<small>({{ karma }})</small> | <a href="{{ url_logout|escape('html_attr') }}">logout</a>
+    {% else %}
+        <a href="{{ url_login|escape('html_attr') }}" {% if actives.login %}class="active"{% endif %}>login</a>
+    {% endif %}
+</header>
+{% endspaceless %}

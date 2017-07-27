@@ -1,0 +1,76 @@
+app_home:
+    path: /
+    defaults: { _controller: AppBundle:Item:topranking }
+
+app_item_topranking:
+    path: /{page}
+    defaults:
+        _controller: AppBundle:Item:topranking
+        page: 1
+    requirements:
+        page: \d+
+
+app_login:
+    path: /login
+    defaults: { _controller: AppBundle:User:loginRegister }
+
+app_login_check:
+    path: /login_check
+
+app_logout:
+    path: /logout
+
+app_guidelines:
+    path: /guidelines
+    defaults: { _controller: AppBundle:Page:guidelines }
+
+app_contact:
+    path: /contact
+    defaults: { _controller: AppBundle:Page:contact }
+
+app_item_newest:
+    path: /newest
+    defaults:
+        _controller: AppBundle:Item:newest
+        page: 1
+    requirements:
+        page: \d+
+
+app_item_submit:
+    path: /submit
+    defaults: { _controller: AppBundle:Item:submit }
+
+app_item_detail:
+    path: /item/{id}
+    defaults: { _controller: AppBundle:Item:detail }
+    requirements:
+        id: "[0-9]+"
+
+app_item_comment:
+    path: /item/{id}/comment/{commentid}
+    defaults: { _controller: AppBundle:Item:detail }
+    requirements:
+        id: "[0-9]+"
+        commentid: "[0-9]+"
+
+app_item_comment_upvote:
+    path: /upvote/comment/{id}
+    defaults: { _controller: AppBundle:Item:commentupvote }
+    requirements:
+        id: "[0-9]+"
+
+app_item_upvote:
+    path: /upvote/item/{id}
+    defaults: { _controller: AppBundle:Item:upvote }
+    requirements:
+        id: "[0-9]+"
+
+app_user_account:
+    path: /account
+    defaults: { _controller: AppBundle:User:account }
+
+app_user_profile:
+    path: "/u/{username}"
+    defaults: { _controller: AppBundle:User:profile }
+    requirements:
+        username: "[a-z0-9_-]{2,15}"

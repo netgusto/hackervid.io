@@ -1,0 +1,24 @@
+{% spaceless %}
+<div style="display: table" id="comm-{{ id }}">
+    <div style="display: table-cell">
+    {% if upvote %}
+        {{ component('ui').upvote({ url: url_upvote, small: true })|raw }}
+    {% else %}
+        <span style="visibility: hidden">{{ component('ui').upvote({ url: url_upvote, small: true })|raw }}</span>
+    {% endif %}
+    </div>
+    <div style="display: table-cell">
+        <small class="comment-header"><a href="{{ url_user }}">{{ username }}</a> {{ reldate }}</small>
+        {% if mentionitem is defined and mentionitem %}
+        <small class="comment-item">&nbsp;|&nbsp;<a href="{{ url_parent }}">parent</a>&nbsp;|&nbsp;on: <a href="{{ url_item|escape("html_attr") }}">{{ itemtitle }}</a></small>
+        {% endif %}
+        <br />
+        <article>
+            {{ content|raw }}
+            {% if reply is defined and reply %}
+            <p class="reply"><small><a href="{{ url_reply|escape("html_attr") }}">reply</a></small></p>
+            {% endif %}
+        </article>
+    </div>
+</div>
+{% endspaceless %}

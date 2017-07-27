@@ -1,0 +1,4 @@
+{% spaceless %}
+{% set tag = (small is defined and small) ? 'small' : 'span' %}
+<{{tag}} class="upvote"><a href="{{ url|escape("html_attr") }}">&#x25b2;</a>&nbsp;</{{tag}}>
+{% endspaceless %}

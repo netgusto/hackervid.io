@@ -1,0 +1,58 @@
+ModelBundle\Entity\User:
+    type: entity
+    table: user
+
+    changeTrackingPolicy: DEFERRED_EXPLICIT
+    options:
+        charset: utf8mb4
+        collate: utf8mb4_unicode_ci
+
+    repositoryClass: ModelBundle\Repository\UserRepository
+
+    oneToMany:
+
+        items:
+            targetEntity: Item
+            mappedBy: user
+            fetch: EXTRA_LAZY
+
+        itemvotes:
+            targetEntity: ItemVote
+            mappedBy: user
+            fetch: EXTRA_LAZY
+
+        itemcomments:
+            targetEntity: ItemComment
+            mappedBy: user
+            fetch: EXTRA_LAZY
+
+        itemcommentvotes:
+            targetEntity: ItemCommentVote
+            mappedBy: user
+            fetch: EXTRA_LAZY
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+
+        username:
+            type: string
+            length: 15
+            unique: true
+
+        passwordhash:
+            type: string
+            length: 64
+
+        karma:
+            type: integer
+
+        creationdate:
+            type: datetime
+
+    lifecycleCallbacks: {  }

@@ -1,0 +1,26 @@
+{% spaceless %}
+<div class="item" style="display: table">
+    <div style="display: table-cell">
+        {% if upvote %}
+            {{ component('ui').upvote({ url: url_upvote })|raw }}
+        {% else %}
+            <span style="visibility:hidden;">{{ component('ui').upvote({ url: url_upvote })|raw }}</span>
+        {% endif %}
+    </div>
+    <div style="display: table-cell;">
+        <a class="title" href="{{ url|escape('html_attr') }}">{{ titlecase(title) }}</a><small class="muted"> ({{ domain }})</small><br />
+
+        <small class="meta">
+            {{ points }} point{{ points > 1 ? 's' : '' }}
+            by <a href="{{ url_user|escape("html_attr") }}">{{ username }}</a>&nbsp;<a href="{{ url_item|escape("html_attr") }}">{{ reldate }}</a> | <a href="{{ url_item|escape("html_attr") }}">
+                {% if nbcomments == 0 %}
+                    discuss
+                {% else %}
+                    {{ nbcomments }} comment{{ nbcomments > 1 ? 's' : '' }}
+                {% endif %}
+            </a>
+        </small>
+    </div>
+</div>
+<div style="clear: both"></div>
+{% endspaceless %}

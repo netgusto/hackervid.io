@@ -1,0 +1,9 @@
+{% spaceless %}
+{% if errors|length %}
+<div class="errors">
+{% for error in errors %}
+    <div>{{ error }}</div>
+{% endfor %}
+</div>
+{% endif %}
+{% endspaceless %}
