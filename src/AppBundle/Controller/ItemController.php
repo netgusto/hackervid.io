@@ -284,7 +284,11 @@ class ItemController extends Controller {
                     $itemurl
                 );
             }, is_null($parentcomment) ? null : $parentcomment->getId()),
-            'parentcomment' => is_null($parentcomment) ? null : $this->commentToViewProps($parentcomment),
+            'parentcomment' => is_null($parentcomment) ? null : $this->commentToViewProps(
+                $parentcomment,
+                $upvotehelper->mayUpvoteComment($parentcomment, $user),
+                $itemurl
+            ),
         ]);
     }
 

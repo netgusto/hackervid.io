@@ -4,30 +4,30 @@ ModelBundle\Entity\ItemComment:
 
         user:
             - NotBlank:
-                message: "User is required."
                 groups: [create, update]
+                message: "User is required."
 
         item:
             - NotBlank:
-                message: "Item is required."
                 groups: [create, update]
+                message: "Item is required."
 
         content:
             - NotBlank:
-                message: "Content is required."
                 groups: [create, update]
+                message: "Content is required."
 
         points:
             - NotBlank:
-                message: "Points is required."
                 groups: [create, update]
+                message: "Points is required."
 
         ipv4:
             - NotBlank:
-                message: "Ipv4 is required."
                 groups: [create, update]
+                message: "Ipv4 is required."
 
         creationdate:
             - NotBlank:
-                message: "Creation date is required."
                 groups: [create, update]
+                message: "Creation date is required."

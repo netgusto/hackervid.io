@@ -73,4 +73,4 @@ app_user_profile:
     path: "/u/{username}"
     defaults: { _controller: AppBundle:User:profile }
     requirements:
-        username: "[a-z0-9_-]{2,15}"
+        username: "[a-z0-9_-]{1,15}"

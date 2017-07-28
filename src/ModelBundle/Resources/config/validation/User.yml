@@ -13,43 +13,45 @@ ModelBundle\Entity\User:
         username:
 
             - NotBlank:
-                message: "Username is required."
                 groups: [create, update]
+                message: "Username is required."
 
             - Length:
+                groups: [create, update]
                 min: 2
                 max: 15
                 minMessage: 'Username must be at least {{ limit }} characters long.'
                 maxMessage: 'Username cannot be longer than {{ limit }} characters.'
 
             - Regex:
+                groups: [create, update]
                 pattern: '/^[a-z0-9\-_]+$/'
                 message: "Usernames can only contain lowercase letters, digits, dashes and underscores. Please choose another."
-                groups: [create, update]
 
         plainpassword:
 
             - NotBlank:
-                message: "Password is required."
                 groups: [create]
+                message: "Password is required."
 
             - Length:
+                groups: [create]
                 min: 8
                 max: 4096
                 minMessage: 'Password must be at least {{ limit }} characters long. Please choose another.'
                 maxMessage: 'Password cannot be longer than {{ limit }} characters. Please choose another.'
-                groups: [create]
 
         karma:
             - NotBlank:
-                message: "Karma is required."
                 groups: [create, update]
+                message: "Karma is required."
 
             - Range:
+                groups: [create, update]
                 min: 1
                 minMessage: "Karma must be at least {{ limit }}."
 
         creationdate:
             - NotBlank:
-                message: "Creation date is required."
                 groups: [create, update]
+                message: "Creation date is required."
