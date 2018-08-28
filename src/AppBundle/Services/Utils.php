@@ -58,7 +58,7 @@ class Utils {
         return $tokenstorage->getToken()->getUser();
     }
 
-    public function pageToRange(int $page, int $perpage = 5) : array {
+    public function pageToRange(int $page, int $perpage = 30) : array {
         return [
             'start' => ($page-1) * $perpage,
             'number' => $perpage,
